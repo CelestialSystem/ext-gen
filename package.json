@@ -4,10 +4,9 @@
   "description": "ext-gen root",
   "main": "index.js",
   "scripts": {
-    "postinstall": "npx lerna bootstrap --loglevel warn",
-    "increment": "npx lerna publish --skip-git --skip-npm --force-publish",
-    "clean": "npx lerna clean",
-    "install:clean": "npm cache clear --force && npx lerna clean && npm install"
+    "increment": "npx lerna version --no-push --yes",
+    "clean": "rm -rf node_modules && npx lerna clean",
+    "install:clean": "npm cache clean --force && npm run clean && npm install"
   },
   "keywords": [
     "Ext",
@@ -17,10 +16,13 @@
   "author": "Sencha, Inc.",
   "license": "MIT",
   "devDependencies": {
-    "lerna": "^6.1.0"
+    "lerna": "^8.1.9"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sencha/ext-allshared"
-  }
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }
