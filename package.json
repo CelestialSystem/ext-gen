@@ -4,7 +4,7 @@
   "description": "ext-gen root",
   "main": "index.js",
   "scripts": {
-    "preinstall": "npx npm-force-resolutions",
+    "preinstall": "command -v npm-force-resolutions >/dev/null 2>&1 && npx npm-force-resolutions || echo ''",
     "postinstall": "npx lerna bootstrap --loglevel warn",
     "increment": "npx lerna publish --skip-git --skip-npm --force-publish",
     "clean": "npx lerna clean",

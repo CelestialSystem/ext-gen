@@ -30,7 +30,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "preinstall": "npx npm-force-resolutions",
+    "preinstall": "command -v npm-force-resolutions >/dev/null 2>&1 && npx npm-force-resolutions || echo ''",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sencha, Inc.",
