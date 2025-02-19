@@ -343,9 +343,9 @@ function handleWorkspaceJsonmigrate() {
 		themes = ['theme-base', 'theme-ios', 'theme-material',
 			'theme-aria', 'theme-neutral', 'theme-classic', 'theme-gray',
 			'theme-crisp', 'theme-crisp-touch', 'theme-neptune', 'theme-neptune-touch',
-			'theme-triton', 'theme-graphite', 'theme-material'],
+			'theme-triton', 'theme-graphite'],
 		packageNames = ['treegrid', 'calendar', 'charts', 'froala-editor', 'amf', 'd3',
-			'exporter', 'pivot', 'pivot-d3', 'ux', 'font-ios' ],
+			'exporter', 'pivot', 'pivot-d3', 'pivot-locale', 'ux', 'font-ios'],
 		basePath = '$\u007Bworkspace.dir}/node_modules/@sencha/ext-',
 		toolkitNamePath = basePath + '$\u007Btoolkit.name}',
 		dirString = '';
