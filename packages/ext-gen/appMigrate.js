@@ -543,22 +543,21 @@ function buildToolKitAndThemeDetails() {
 }
 
 function verifyAndUpdateTheme(appTheme) {
-	var themeStr = appTheme.replace(/[^a-z-]/g, '');
+	var themeStr = appTheme.replace(/[^a-z-]/g, ''),
+		matchedTheme;
 
 	// once special chars are removed check if it is one of the existing themes 
-	if(themes.indexOf(themeStr) >= 0) {
+	if (themes.indexOf(themeStr) >= 0) {
 		return themeStr;
-	} else {  // if doesn't exists return the appropriate theme from built-in theme list
-		var matchedTheme;
-
-		for(var i = 0; i < themes.length; i++) {
-			if (themeStr.includes(themes[i])) {
-				matchedTheme = themes[i];
-				break;
-			}
-		}
-
-		return matchedTheme ? matchedTheme : appTheme;
 	}
+	
+	// if doesn't exists return the appropriate theme from built-in theme list
+	for (var i = 0; i < themes.length; i++) {
+		if (themeStr.includes(themes[i])) {
+			matchedTheme = themes[i];
+			break;
+		}
+	}
+	return matchedTheme ? matchedTheme : appTheme;
 }
 
