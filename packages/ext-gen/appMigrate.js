@@ -544,7 +544,7 @@ function buildToolKitAndThemeDetails() {
 
 function verifyAndUpdateTheme(appTheme) {
 	var themeStr = appTheme.replace(/[^a-z-]/g, ''),
-		matchedTheme;
+		       matchedTheme;
 
 	// once special chars are removed check if it is one of the existing themes 
 	if (themes.indexOf(themeStr) >= 0) {
