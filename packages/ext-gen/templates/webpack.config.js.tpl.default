@@ -1,5 +1,5 @@
 const path = require('path');
-const ExtWebpackPlugin = require('@sencha/ext-webpack-plugin');
+const {ExtWebpackPlugin, createCustomWebSocketServer } = require('@sencha/ext-webpack-plugin');
 const portfinder = require('portfinder');
 
 module.exports = async function (env) {
@@ -91,12 +91,29 @@ module.exports = async function (env) {
       optimization: { emitOnErrors: false },
       node: false,
       devServer: {
-        liveReload: !isProd,
+        liveReload: false, //!isProd,
         historyApiFallback: !isProd,
         host: host,
         port: port,
         allowedHosts: 'all',
         compress: isProd,
+        client: false,
+        webSocketServer:false,
+        onListening: (server) => {
+          if(!isProd) {
+            try{
+              const httpServer = server.server;
+            if (!httpServer || typeof httpServer.on !== 'function') {
+              throw new Error('Expected a valid Node HTTP server');
+            }
+            //start custom websocket server
+              createCustomWebSocketServer(httpServer);
+            } catch(e) {
+              console.log('error', e);
+            }
+            
+          } 
+        },
         static: {
           directory: path.resolve(__dirname, outputFolder),
           watch: isProd ? false : { ignored: ignoreFolders }
